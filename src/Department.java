@@ -37,12 +37,12 @@ public class Department {
 			if (emp1 != null) count++;
 		}*/
 		//assign new employee newEmp to the first free position in the employee array emps[count]
-		if (numEmps() < emps.length) {
-			emps[numEmps()] = newEmp;
+		if (getNumActualEmps() < emps.length) {
+			emps[getNumActualEmps()] = newEmp;
 		}
 	}
 	
-	public Employee[] allEmps() {
+	public Employee[] getActualEmps() {
 		/*
 		// assign the number of not null employees to count
 		int count = 0;
@@ -50,15 +50,15 @@ public class Department {
 			if (emp1 != null) count++;
 		}*/
 		// create an array of the number of count employees (not null)
-		Employee[] depEmps = new Employee[numEmps()];
-		for (int i = 0; i<numEmps(); i++) {
-			depEmps[i] = emps[i];
+		Employee[] actualEmps = new Employee[getNumActualEmps()];
+		for (int i = 0; i<getNumActualEmps(); i++) {
+			actualEmps[i] = emps[i];
 		}
 		//return the array with not null employees
-		return depEmps;
+		return actualEmps;
 	}
 	
-	public int numEmps() {
+	public int getNumActualEmps() {
 		// assign the number of not null employees to count
 		int count = 0;
 		for (Employee emp : emps) {
@@ -67,24 +67,25 @@ public class Department {
 		return count;
 	}
 	
-	public Employee findEmp(int id) {
+	public Employee getEmpById(int searchId) {
 		// search for employee with given id
-		for (Employee emp : emps) {
-			if (id == emp.getId()) return emp;
-		} 
-		return null;
+			for (Employee emp : getActualEmps()) {
+				if (searchId == emp.getId()) return emp;
+			} 
+			System.out.println("there is no such employee with the id: " + searchId);
+			return null;	
 	}
-	public double depSalary() {
+	public double getTotalSalary() {
 		//return total salary of the department
 		double totalSalary = 0;
-		for (Employee emp : allEmps()) {
+		for (Employee emp : getActualEmps()) {
 			totalSalary += emp.getSalary();		}
 		return totalSalary;
 	}
-	public double avSalary() {
+	public double getAvSalary() {
 		//return total salary of the department		
 		try {
-			return depSalary()/numEmps();		
+			return getTotalSalary()/getNumActualEmps();		
 		} catch (ArithmeticException e) {
 			System.out.println("There are 0 employees in the department");
 			return 0;

@@ -26,7 +26,7 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getdepId() {
+	public int getDepId() {
 		return depId;
 	}
 	public void setDep_id(int depId) {
@@ -41,7 +41,7 @@ public class Employee {
 	/***** FINISH SETTERS AND GETTERS ******/
 	
 	public String toString() {
-		return ("id: " + id + ", name: " + name + ", depId: " + depId + ", salary: " + salary);
+		return ("id: " + getId() + ", name: " + getName() + ", depId: " + getDepId() + ", salary: " + getSalary());
 	}
 	
 }
